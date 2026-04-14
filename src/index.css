@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Be Vietnam Pro", sans-serif;
+  
+  --color-primary: #005bbf;
+  --color-primary-container: #1a73e8;
+  --color-secondary: #7c5800;
+  --color-secondary-container: #feb700;
+  --color-tertiary: #ba142c;
+  --color-tertiary-container: #de3341;
+  --color-surface: #f8f9fa;
+  --color-surface-container: #edeeef;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #414754;
+  --color-on-primary: #ffffff;
+  --color-on-secondary-container: #6b4b00;
+  --color-outline-variant: rgba(193, 198, 214, 0.15);
+
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+}
+
+@layer base {
+  body {
+    @apply bg-surface font-body text-on-surface antialiased;
+  }
+}
+
+@layer utilities {
+  .tight-tracking {
+    letter-spacing: -0.04em;
+  }
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-xl;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
