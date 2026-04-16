@@ -16,11 +16,11 @@ export default function Navbar() {
   return (
     <motion.header 
       style={{ backgroundColor, boxShadow }}
-      className="fixed top-0 w-full z-50 backdrop-blur-xl"
+      className="fixed inset-x-0 top-0 z-50 backdrop-blur-xl"
     >
-      <div className="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
-        <div className="text-2xl font-black text-primary tracking-tighter">Authority CRM</div>
-        <nav className="hidden md:flex gap-8 items-center">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:h-20 sm:px-6 lg:px-8">
+        <div className="text-xl font-black tracking-tighter text-primary sm:text-2xl">Authority CRM</div>
+        <nav className="hidden items-center gap-6 md:flex lg:gap-8">
           <a className="text-primary font-bold border-b-2 border-primary hover:text-primary/80 transition-colors duration-300" href="#platform">Platform</a>
           <a className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#solutions">Solutions</a>
           <a className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#results">Results</a>
@@ -29,7 +29,7 @@ export default function Navbar() {
         <motion.button 
           whileHover={{ scale: 0.95 }}
           whileTap={{ scale: 0.9 }}
-          className="bg-secondary-container text-on-secondary-container px-8 py-3 rounded-full font-bold shadow-sm"
+          className="shrink-0 rounded-full bg-secondary-container px-4 py-2.5 text-sm font-bold text-on-secondary-container shadow-sm sm:px-6 sm:py-3 sm:text-base lg:px-8"
         >
           Book a Call
         </motion.button>

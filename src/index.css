@@ -28,7 +28,7 @@
 
 @layer base {
   body {
-    @apply bg-surface font-body text-on-surface antialiased;
+    @apply bg-surface font-body text-on-surface antialiased overflow-x-hidden;
   }
 }
 

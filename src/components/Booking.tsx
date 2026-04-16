@@ -2,14 +2,14 @@ import { motion } from 'motion/react';
 
 export default function Booking() {
   return (
-    <section id="booking" className="py-32 bg-surface overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="text-center mb-16">
+    <section id="booking" className="overflow-hidden bg-surface py-16 sm:py-20 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center sm:mb-16">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-primary text-white px-4 py-1 font-bold rounded-full mb-4 inline-block"
+            className="mb-4 inline-block rounded-full bg-primary px-4 py-1 font-bold text-white"
           >
             GET STARTED
           </motion.span>
@@ -18,7 +18,7 @@ export default function Booking() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-headline text-5xl font-black tight-tracking"
+            className="font-headline text-3xl font-black tight-tracking sm:text-4xl lg:text-5xl"
           >
             Book Your Strategy Call
           </motion.h2>
@@ -29,11 +29,12 @@ export default function Booking() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-outline-variant/10 min-h-[600px] relative"
+          className="relative min-h-[520px] overflow-hidden rounded-[2rem] border border-outline-variant/10 bg-white shadow-2xl sm:min-h-[600px] sm:rounded-[3rem]"
         >
           <iframe 
             src="https://link.automationpaths.com/widget/booking/EpX6GpsE7i9HfNCJceF4" 
-            style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '600px' }} 
+            className="min-h-[520px] w-full sm:min-h-[600px]"
+            style={{ border: 'none', overflow: 'hidden' }} 
             scrolling="no" 
             id="uQlTYqUYXJQGWX0qKmRA_1776153205906"
             title="Booking Calendar"

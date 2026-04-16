@@ -3,15 +3,15 @@ import { motion } from 'motion/react';
 
 export default function About() {
   return (
-    <section className="py-32 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+    <section className="overflow-hidden bg-white py-16 sm:py-20 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
           <div>
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-block bg-primary/10 text-primary px-4 py-1 font-bold rounded-full mb-6"
+              className="mb-6 inline-block rounded-full bg-primary/10 px-4 py-1 font-bold text-primary"
             >
               WHO WE ARE
             </motion.span>
@@ -20,7 +20,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="font-headline text-5xl font-black tight-tracking mb-8"
+              className="mb-6 font-headline text-3xl font-black tight-tracking sm:mb-8 sm:text-4xl lg:text-5xl"
             >
               Built by Operators. <br/>Not a Software Company.
             </motion.h2>
@@ -29,7 +29,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-on-surface-variant mb-10 leading-relaxed"
+              className="mb-8 text-base leading-relaxed text-on-surface-variant sm:mb-10 sm:text-lg"
             >
               We're Revenue Systems Architects who build the same AI infrastructure we'd want running our own real estate business. Certified GHL Admins with 1000+ implementations.
             </motion.p>
@@ -38,7 +38,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="flex gap-4 items-center"
+              className="flex flex-col items-start gap-4 sm:flex-row sm:items-center"
             >
               <div className="flex -space-x-4">
                 {[
@@ -48,7 +48,7 @@ export default function About() {
                   <motion.img 
                     key={i}
                     whileHover={{ scale: 1.1, zIndex: 10 }}
-                    className="w-14 h-14 rounded-full border-4 border-white object-cover shadow-lg cursor-pointer" 
+                    className="h-12 w-12 cursor-pointer rounded-full border-4 border-white object-cover shadow-lg sm:h-14 sm:w-14" 
                     src={src} 
                     alt="Team member"
                     referrerPolicy="no-referrer"
@@ -56,7 +56,7 @@ export default function About() {
                 ))}
               </div>
               <div>
-                <p className="font-bold text-lg">The Monolith Team</p>
+                <p className="text-lg font-bold">The Monolith Team</p>
                 <p className="text-sm text-on-surface-variant">Certified GHL Partners</p>
               </div>
             </motion.div>
@@ -65,21 +65,21 @@ export default function About() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-surface p-12 rounded-[3rem] border border-outline-variant relative group"
+            className="group relative rounded-[2rem] border border-outline-variant bg-surface p-6 sm:rounded-[3rem] sm:p-10 lg:p-12"
           >
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+            <div className="absolute top-0 right-0 p-6 opacity-10 transition-opacity group-hover:opacity-20 sm:p-8">
               <Star size={80} className="text-primary" />
             </div>
-            <div className="mb-8 relative z-10">
-              <div className="flex text-secondary-container mb-4">
+            <div className="relative z-10 mb-8">
+              <div className="mb-4 flex text-secondary-container">
                 {[...Array(5)].map((_, i) => <Star key={i} className="fill-current" />)}
               </div>
-              <p className="text-2xl font-bold mb-4 leading-tight">"Within 2 weeks, our AI booked 11 appointments from leads we thought were completely dead."</p>
-              <p className="text-sm text-on-surface-variant font-medium">— Real Estate Team Lead, Texas</p>
+              <p className="mb-4 text-xl font-bold leading-tight sm:text-2xl">"Within 2 weeks, our AI booked 11 appointments from leads we thought were completely dead."</p>
+              <p className="text-sm font-medium text-on-surface-variant">- Real Estate Team Lead, Texas</p>
             </div>
-            <div className="pt-8 border-t border-outline-variant relative z-10">
-              <p className="text-2xl font-bold mb-4 leading-tight">"The system paid for itself in the first month. Our agents don't manually follow up anymore."</p>
-              <p className="text-sm text-on-surface-variant font-medium">— Broker, Florida</p>
+            <div className="relative z-10 border-t border-outline-variant pt-8">
+              <p className="mb-4 text-xl font-bold leading-tight sm:text-2xl">"The system paid for itself in the first month. Our agents don't manually follow up anymore."</p>
+              <p className="text-sm font-medium text-on-surface-variant">- Broker, Florida</p>
             </div>
           </motion.div>
         </div>

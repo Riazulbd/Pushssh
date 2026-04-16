@@ -1,100 +1,65 @@
-import { Mail, Phone, Github, Twitter, Linkedin, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import footerBg from '../assets/footer-bg.png';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-white rounded-t-[3rem] mt-20 overflow-hidden relative">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 blur-[120px] rounded-full -mr-48 -mt-48"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 blur-[120px] rounded-full -ml-48 -mb-48"></div>
+    <footer className="relative overflow-hidden">
+      <section className="relative min-h-[600px] overflow-hidden pt-24 pb-16 sm:pt-32 sm:pb-24 lg:min-h-[700px] lg:pt-40">
+        <img
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          src={footerBg}
+          alt="Footer background"
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
 
-      <div className="max-w-7xl mx-auto px-8 pt-24 pb-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
-          {/* Brand Column */}
-          <div className="lg:col-span-4">
-            <div className="text-3xl font-black text-white tracking-tighter mb-6">Authority CRM</div>
-            <p className="text-slate-400 text-lg leading-relaxed mb-8 max-w-sm">
-              The premier automation agency for high-growth real estate teams. We turn cold leads into booked appointments while you sleep.
-            </p>
-            <div className="flex gap-4">
-              {[Twitter, Linkedin, Github].map((Icon, i) => (
-                <motion.a
-                  key={i}
-                  href="#"
-                  whileHover={{ y: -4, color: '#feb700' }}
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 transition-colors"
-                >
-                  <Icon size={20} />
-                </motion.a>
-              ))}
-            </div>
-          </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-full flex-col items-center justify-center text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-6 font-headline text-4xl font-black text-white tight-tracking sm:mb-8 sm:text-5xl lg:text-6xl"
+          >
+            Ready to Automate Your Authority?
+          </motion.h2>
 
-          {/* Links Columns */}
-          <div className="lg:col-span-4 grid grid-cols-2 gap-8">
-            <div>
-              <h4 className="font-headline font-bold text-white mb-8 uppercase tracking-widest text-sm">Platform</h4>
-              <ul className="space-y-4">
-                {['AI Voice Agents', 'SMS Nurture', 'CRM Integration', 'Lead Reactivation'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-slate-400 hover:text-white transition-colors flex items-center group">
-                      <span className="w-0 group-hover:w-4 h-[1px] bg-secondary mr-0 group-hover:mr-2 transition-all"></span>
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-headline font-bold text-white mb-8 uppercase tracking-widest text-sm">Company</h4>
-              <ul className="space-y-4">
-                {['Success Stories', 'Pricing', 'About Us', 'Contact'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-slate-400 hover:text-white transition-colors flex items-center group">
-                      <span className="w-0 group-hover:w-4 h-[1px] bg-secondary mr-0 group-hover:mr-2 transition-all"></span>
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="mb-10 max-w-2xl text-base text-white/90 sm:mb-12 sm:text-lg"
+          >
+            Join hundreds of real estate teams turning cold leads into booked appointments, automatically.
+          </motion.p>
 
-          {/* Newsletter Column */}
-          <div className="lg:col-span-4">
-            <h4 className="font-headline font-bold text-white mb-8 uppercase tracking-widest text-sm">Stay Updated</h4>
-            <p className="text-slate-400 mb-6">Get the latest AI automation strategies delivered to your inbox.</p>
-            <form className="relative">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="w-full bg-white/5 border border-white/10 rounded-full py-4 px-6 focus:outline-none focus:border-primary transition-colors text-white"
-              />
-              <button className="absolute right-2 top-2 bottom-2 bg-primary text-white px-6 rounded-full font-bold hover:bg-primary-container transition-colors flex items-center gap-2">
-                Join <ArrowRight size={16} />
-              </button>
-            </form>
-            <div className="mt-8 flex items-center gap-6">
-              <div className="flex items-center gap-2 text-slate-400">
-                <Mail size={18} className="text-secondary" />
-                <span className="text-sm">hello@authoritycrm.ai</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-400">
-                <Phone size={18} className="text-secondary" />
-                <span className="text-sm">+1 (555) 000-0000</span>
-              </div>
-            </div>
-          </div>
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="rounded-full bg-secondary-container px-8 py-4 text-base font-bold text-on-secondary-container shadow-xl transition-transform sm:px-12 sm:py-6 sm:text-lg"
+          >
+            Start Your Free Trial
+          </motion.button>
         </div>
+      </section>
 
-        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-slate-500 text-sm">
-            © 2024 Authority CRM. All rights reserved. Certified GoHighLevel Partner.
-          </p>
-          <div className="flex gap-8 text-sm">
-            <a href="#" className="text-slate-500 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="text-slate-500 hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="text-slate-500 hover:text-white transition-colors">Cookie Policy</a>
+      {/* Footer links */}
+      <div className="relative z-10 bg-slate-950/95 py-12 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
+            <p className="text-sm text-slate-400">
+              © 2024 Authority CRM. All rights reserved. Certified GoHighLevel Partner.
+            </p>
+            <div className="flex flex-wrap justify-center gap-5 text-sm sm:gap-8 md:justify-end">
+              <a href="#" className="text-slate-400 transition-colors hover:text-white">Privacy Policy</a>
+              <a href="#" className="text-slate-400 transition-colors hover:text-white">Terms of Service</a>
+              <a href="#" className="text-slate-400 transition-colors hover:text-white">Contact Us</a>
+            </div>
           </div>
         </div>
       </div>
