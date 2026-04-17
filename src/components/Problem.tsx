@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import problemAccent from '../assets/art/problem-accent.png';
 
 export default function Problem() {
   const stats = [
@@ -34,19 +33,6 @@ export default function Problem() {
         </div>
 
         <div className="relative">
-          <motion.img
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="pointer-events-none absolute left-1/2 top-1/2 z-20 hidden w-24 -translate-x-1/2 -translate-y-1/2 rotate-[8deg] md:block lg:w-28"
-            src={problemAccent}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-          />
-
           <div className="grid gap-4 sm:gap-6 md:grid-cols-3 lg:gap-8">
             {stats.map((stat, i) => (
               <motion.div

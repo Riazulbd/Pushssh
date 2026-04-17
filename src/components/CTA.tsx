@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import ctaAccent from '../assets/art/cta-accent.png';
 
 export default function CTA() {
   return (
@@ -19,17 +18,6 @@ export default function CTA() {
             transition={{ duration: 10, repeat: Infinity }}
             className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-container/40 via-transparent to-transparent"
           ></motion.div>
-
-          <motion.img
-            animate={{ y: [0, -10, 0], rotate: [0, -4, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-            className="pointer-events-none absolute -right-4 -bottom-6 hidden w-24 translate-y-1/4 sm:block md:w-32 lg:-right-6 lg:w-40"
-            src={ctaAccent}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-          />
 
           <div className="relative z-10">
             <motion.h2
