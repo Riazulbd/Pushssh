@@ -12,7 +12,6 @@ import Results from './components/Results';
 import Integration from './components/Integration';
 import BentoGrid from './components/BentoGrid';
 import About from './components/About';
-import Booking from './components/Booking';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 
@@ -29,7 +28,6 @@ export default function App() {
         <Integration />
         <BentoGrid />
         <About />
-        <Booking />
         <CTA />
       </main>
       <Footer />

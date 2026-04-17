@@ -56,8 +56,8 @@ export default function Footer() {
               © 2024 Authority CRM. All rights reserved. Certified GoHighLevel Partner.
             </p>
             <div className="flex flex-wrap justify-center gap-5 text-sm sm:gap-8 md:justify-end">
-              <a href="#" className="text-slate-400 transition-colors hover:text-white">Privacy Policy</a>
-              <a href="#" className="text-slate-400 transition-colors hover:text-white">Terms of Service</a>
+              <a href="/privacy-policy.html" className="text-slate-400 transition-colors hover:text-white">Privacy Policy</a>
+              <a href="/terms-and-conditions.html" className="text-slate-400 transition-colors hover:text-white">Terms of Service</a>
               <a href="#" className="text-slate-400 transition-colors hover:text-white">Contact Us</a>
             </div>
           </div>
