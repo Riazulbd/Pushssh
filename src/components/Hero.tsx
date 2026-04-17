@@ -60,13 +60,24 @@ export default function Hero() {
               >
                 Launch Your Automation
               </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full rounded-full bg-primary px-6 py-4 text-base font-bold text-on-primary shadow-xl transition-transform sm:w-auto sm:px-10 sm:py-5 sm:text-lg"
-              >
-                Watch Live Demo
-              </motion.button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="mx-auto max-w-xl overflow-hidden rounded-3xl border border-outline-variant/20 bg-white shadow-xl lg:mx-0"
+            >
+              <div className="border-b border-outline-variant/20 px-4 py-3 text-left text-sm font-semibold text-primary sm:px-6">
+                Embedded Calling
+              </div>
+              <iframe
+                src="https://link.automationpaths.com/widget/booking/EpX6GpsE7i9HfNCJceF4"
+                className="h-[540px] w-full"
+                style={{ border: 'none', overflow: 'hidden' }}
+                scrolling="no"
+                title="Embedded Calling"
+              ></iframe>
             </motion.div>
           </div>
 
