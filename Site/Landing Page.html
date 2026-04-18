@@ -195,7 +195,7 @@
   }
   .logo-mark::before { width: 14px; height: 14px; border-color: var(--paper); }
   .logo-mark::after  { width: 6px; height: 6px; background: var(--accent-400); border: none; }
-  .logo-name { font-weight: 500; }
+  .logo-name { font-weight: 500; white-space: nowrap; }
   .logo-name em { font-style: italic; color: var(--ink-500); font-weight: 400; }
 
   .nav-links { display: flex; gap: 32px; font-size: 14px; color: var(--ink-700); }
@@ -993,6 +993,86 @@
       font-size: 20px;
     }
   }
+
+  /* ---------- Booking Modal ---------- */
+  .booking-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .booking-modal[style*="display: none"] { pointer-events: none; }
+  .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(14, 17, 22, 0.7);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease-out;
+  }
+  .modal-content {
+    position: relative;
+    background: var(--paper);
+    border-radius: 16px;
+    box-shadow: 0 20px 80px -20px rgba(16, 24, 40, 0.35);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+  }
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--ink-500);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--ink-900); }
+  .modal-header {
+    padding: 32px 32px 0;
+    border-bottom: 1px solid var(--ink-100);
+  }
+  .modal-header h2 {
+    margin-bottom: 8px;
+    font-size: 28px;
+  }
+  .modal-header p {
+    color: var(--ink-500);
+    font-size: 15px;
+  }
+  .modal-body {
+    padding: 32px;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @media (max-width: 600px) {
+    .modal-content {
+      width: 95%;
+      max-height: 95vh;
+    }
+    .modal-header,
+    .modal-body {
+      padding: 24px;
+    }
+    .modal-header h2 {
+      font-size: 24px;
+    }
+  }
 </style>
 </head>
 <body data-accent="plum" data-font="fraunces" data-hero="centered">
@@ -1012,8 +1092,7 @@
       <a href="#faq">FAQ</a>
     </div>
     <div class="nav-cta">
-      <a href="#" class="btn btn-text">Sign in</a>
-      <a href="#cta" class="btn btn-primary">Book a demo <span class="arrow">→</span></a>
+      <a href="#cta" class="btn btn-primary btn-book-now">Book a demo <span class="arrow">→</span></a>
     </div>
   </div>
 </nav>
@@ -1033,7 +1112,7 @@
         Autonomous AI voice and SMS agents that qualify leads, book appointments, and drive revenue &mdash; integrated with your CRM and fully HIPAA compliant.
       </p>
       <div class="hero-actions">
-        <a href="#cta" class="btn btn-primary btn-lg">Book a 20-min demo <span class="arrow">&rarr;</span></a>
+        <a href="#cta" class="btn btn-primary btn-lg btn-book-now">Book a 20-min demo <span class="arrow">&rarr;</span></a>
         <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
       </div>
       <div class="hero-meta">
@@ -1423,7 +1502,7 @@
     <h2>Stop missing calls.<br>Stop losing <span class="italic">leads.</span></h2>
     <p>20-minute demo. Voice and SMS agents running on a number like yours, with your call volume modeled.</p>
     <div class="hero-actions" style="justify-content:center">
-      <a href="#" class="btn btn-primary btn-lg">Book a demo <span class="arrow">→</span></a>
+      <a href="#" class="btn btn-primary btn-lg btn-book-now">Book a demo <span class="arrow">→</span></a>
       <a href="#" class="btn btn-ghost btn-lg">Talk to solutions</a>
     </div>
   </div>
@@ -1475,6 +1554,26 @@
     </div>
   </div>
 </footer>
+
+<!-- =================== BOOKING MODAL =================== -->
+<div id="booking-modal" class="booking-modal" style="display: none;">
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close" aria-label="Close booking modal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="modal-header">
+      <h2>Book a Demo</h2>
+      <p>Schedule a 20-minute call with our team</p>
+    </div>
+    <div class="modal-body" id="calendar-embed">
+      <!-- Calendar embed code will be inserted here -->
+    </div>
+  </div>
+</div>
 
 <!-- =================== TWEAKS PANEL =================== -->
 <div id="tweaks-panel">
@@ -1572,6 +1671,36 @@
   });
   document.querySelectorAll('#heros .pill').forEach(el => {
     el.addEventListener('click', () => setKey('heroVariant', el.dataset.hero));
+  });
+
+  // ---------- Booking modal handlers ----------
+  const bookingModal = document.getElementById('booking-modal');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalClose = document.getElementById('modal-close');
+  const bookNowButtons = document.querySelectorAll('.btn-book-now');
+
+  function openModal() {
+    bookingModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    bookingModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  bookNowButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && bookingModal.style.display === 'flex') closeModal();
   });
 
   // ---------- Edit mode protocol ----------
