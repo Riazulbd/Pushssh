@@ -14,7 +14,7 @@
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     "accent": "plum",
     "fontPair": "fraunces",
-    "heroVariant": "split"
+    "heroVariant": "centered"
   }/*EDITMODE-END*/;
 </script>
 
@@ -212,6 +212,10 @@
     gap: 64px;
     align-items: center;
   }
+  .hero-copy {
+    width: 100%;
+    min-width: 0;
+  }
   [data-hero="split"] .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
   [data-hero="centered"] .hero-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 48px; }
   [data-hero="centered"] .hero-visual { width: 100%; max-width: 900px; }
@@ -314,7 +318,134 @@
   .sms-meta { font-family: var(--font-mono); font-size: 10px; color: var(--ink-400); margin-top: 8px; }
 
   /* Centered variant uses wider single panel */
-  [data-hero="centered"] .sms-card { position: static; width: 100%; max-width: 340px; margin: 24px auto 0; }
+  [data-hero="centered"] .hero {
+    padding: 84px 0 138px;
+  }
+  [data-hero="centered"] .hero::before {
+    filter: blur(70px);
+    opacity: 0.96;
+  }
+  [data-hero="centered"] .hero-copy {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  [data-hero="centered"] .hero h1 {
+    max-width: 11ch;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(56px, 8.2vw, 96px);
+    line-height: 0.96;
+  }
+  [data-hero="centered"] .hero-lede {
+    max-width: 34ch;
+    font-size: clamp(18px, 2.2vw, 22px);
+  }
+  [data-hero="centered"] .hero-meta {
+    justify-content: center;
+  }
+  [data-hero="centered"] .sms-card { display: none; }
+  .hero-surface {
+    position: relative;
+    width: 100%;
+    padding-bottom: clamp(26px, 4vw, 52px);
+  }
+  .hero-call-card {
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 24px 90px -38px rgba(16,24,40,0.35);
+  }
+  .hero-call-card .transcript {
+    gap: 16px;
+  }
+  .hero-card-foot {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--ink-100);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 20px;
+    font-size: 12px;
+    color: var(--ink-500);
+  }
+  .hero-card-foot span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-card-foot .check {
+    width: 14px;
+    height: 14px;
+    color: var(--accent-500);
+  }
+  .hero-stage {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 58%);
+    width: min(360px, calc(100% - 64px));
+    padding: 18px 20px 16px;
+    border-radius: 24px 24px 0 0;
+    background: #11151d;
+    color: var(--paper);
+    box-shadow: 0 22px 60px -28px rgba(17,21,29,0.85);
+  }
+  .hero-stage-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .hero-stage-label,
+  .hero-stage-status {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .hero-stage-label { color: rgba(255,255,255,0.7); }
+  .hero-stage-status {
+    color: #7CF7B4;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-stage-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7CF7B4;
+    box-shadow: 0 0 0 4px rgba(124,247,180,0.12);
+  }
+  .hero-stage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .hero-stage-chip {
+    padding: 11px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-stage-chip strong {
+    display: block;
+    font-size: 13px;
+    line-height: 1.2;
+    margin-bottom: 4px;
+    color: var(--paper);
+  }
+  .hero-stage-chip span {
+    display: block;
+    font-size: 11px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.65);
+  }
 
   /* Editorial variant: horizontal strip */
   [data-hero="editorial"] .hero-visual { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start; }
@@ -702,22 +833,129 @@
   .stat-label { font-size: 13px; color: var(--ink-500); }
 
   /* Responsive */
+  @media (max-width: 1180px) {
+    .nav-links { gap: 22px; }
+    .section-head { gap: 40px; }
+    .steps, .usecases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .integrations { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .results-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .foot { grid-template-columns: 1.5fr 1fr 1fr; gap: 36px; }
+  }
   @media (max-width: 900px) {
-    .hero-grid, [data-hero="split"] .hero-grid { grid-template-columns: 1fr !important; }
-    .sms-card { position: static !important; margin-top: 20px; width: 100% !important; }
-    .section-head { grid-template-columns: 1fr; gap: 24px; }
-    .steps, .usecases { grid-template-columns: 1fr !important; }
-    .integrations { grid-template-columns: repeat(2, 1fr); }
-    .results-stats { grid-template-columns: repeat(2, 1fr); }
-    .testimonials { grid-template-columns: 1fr; }
-    .logobar-row { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .foot { grid-template-columns: 1fr 1fr; }
+    .wrap { padding: 0 24px; }
+    .nav { position: static; }
+    .nav-inner {
+      height: auto;
+      padding: 16px 0;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
     .nav-links { display: none; }
+    .hero,
+    .results-band,
+    .cta-band,
+    section.band { padding: 80px 0; }
+    .hero-grid,
+    [data-hero="split"] .hero-grid { grid-template-columns: 1fr !important; gap: 40px; }
+    [data-hero="centered"] .hero { padding-top: 68px; padding-bottom: 120px; }
+    [data-hero="centered"] .hero h1 { max-width: 12ch; }
+    .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+    .steps, .usecases, .testimonials { grid-template-columns: 1fr !important; }
+    .integrations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .results-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .logobar-row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .compliance-inner { align-items: flex-start; gap: 24px; }
+    .browser-bar { flex-wrap: wrap; }
+    .browser-bar .url { margin-left: 0; max-width: none; }
+    .foot { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .foot-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
     [data-hero="editorial"] .hero-visual { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .wrap { padding: 0 18px; }
+    .nav-cta {
+      width: 100%;
+      justify-content: space-between;
+    }
+    .hero-actions {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero-actions .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .hero-meta {
+      justify-content: center;
+      gap: 12px 18px;
+    }
+    .card-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .turn {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .turn .who { justify-self: start; }
+    .hero-card-foot {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-stage {
+      width: min(340px, calc(100% - 32px));
+      padding: 16px 16px 14px;
+    }
+    .logobar-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .results-stats { grid-template-columns: 1fr; }
+    .dash-tabs {
+      display: flex;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .dash-tabs::-webkit-scrollbar { display: none; }
+    .testimonial,
+    .stat-card,
+    .step,
+    .usecase,
+    .integration { padding-left: 22px; padding-right: 22px; }
+    .foot { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .nav-cta {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .nav-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    [data-hero="centered"] .hero h1 {
+      font-size: clamp(42px, 14vw, 58px);
+    }
+    .hero-lede { font-size: 16px; }
+    .hero-stage-grid { grid-template-columns: 1fr; }
+    .results-band,
+    .cta-band,
+    section.band { padding: 72px 0; }
+    .integrations,
+    .logobar-row { grid-template-columns: 1fr; }
+    .results-stats { gap: 14px; }
+    details.faq-item summary {
+      gap: 16px;
+      font-size: 20px;
+    }
   }
 </style>
 </head>
-<body data-accent="teal" data-font="instrument" data-hero="split">
+<body data-accent="plum" data-font="fraunces" data-hero="centered">
 
 <!-- =================== NAV =================== -->
 <nav class="nav">
@@ -745,31 +983,31 @@
   <div class="wrap hero-grid">
 
     <div class="hero-copy">
-      <div class="eyebrow hero-eyebrow"><span class="dot"></span>Voice & SMS AI · Managed service</div>
+      <div class="eyebrow hero-eyebrow"><span class="dot"></span>Voice &amp; SMS AI &middot; Managed service</div>
       <h1>
         Every call answered.<br>
         Every lead <span class="accent-word italic">followed up.</span>
       </h1>
       <p class="lede hero-lede">
-        Voice and SMS agents that book, qualify, and follow up — wired into the CRM you already use.
+        Voice and SMS agents that book, qualify, and follow up &mdash; wired into the CRM you already use.
       </p>
       <div class="hero-actions">
-        <a href="#cta" class="btn btn-primary btn-lg">Book a 20-min demo <span class="arrow">→</span></a>
+        <a href="#cta" class="btn btn-primary btn-lg">Book a 20-min demo <span class="arrow">&rarr;</span></a>
         <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
       </div>
       <div class="hero-meta">
         <span><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Live in 30 days</span>
-        <span><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> HIPAA · SOC 2 · TCPA</span>
+        <span><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> HIPAA &middot; SOC 2 &middot; TCPA</span>
       </div>
     </div>
 
     <!-- Hero visual: demo stack -->
     <div class="hero-visual">
-      <div class="visual-stack">
-        <div class="call-card">
+      <div class="hero-surface">
+        <div class="call-card hero-call-card">
           <div class="card-head">
-            <div class="card-head-l"><span class="live-dot"></span> Live call · Inbound receptionist</div>
-            <div class="card-head-r">00:47 · +1 (415) 555-0132</div>
+            <div class="card-head-l"><span class="live-dot"></span> Live call &middot; Inbound receptionist</div>
+            <div class="card-head-r">00:47 &middot; +1 (415) 555-0132</div>
           </div>
           <div class="transcript">
             <div class="turn caller">
@@ -790,23 +1028,31 @@
             <div class="turn ai">
               <div class="who">Agent</div>
               <div class="text">
-                Booked. I'll text the confirmation and a pre-visit form to this number. <em>— creating calendar event · sending SMS</em>
+                Booked. I'll text the confirmation and a pre-visit form to this number. <em>&mdash; creating calendar event &middot; sending SMS</em>
               </div>
             </div>
           </div>
+          <div class="hero-card-foot">
+            <span><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Calendar synced instantly</span>
+            <span><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> CRM updated before the call ends</span>
+          </div>
         </div>
 
-        <div class="sms-card">
-          <div class="card-head">
-            <div class="card-head-l"><span class="live-dot" style="background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,0.2)"></span> Follow-up SMS</div>
-            <div class="card-head-r">+1 (415) 555-0132</div>
+        <div class="hero-stage" aria-hidden="true">
+          <div class="hero-stage-top">
+            <span class="hero-stage-label">Agent workflow</span>
+            <span class="hero-stage-status">Live</span>
           </div>
-          <div class="sms-thread">
-            <div class="bubble out">Confirmed Thu 2:30 PM w/ Dr. Alvarez. Reply R to reschedule or tap: flow.ai/v/9k2</div>
-            <div class="bubble in">Thanks! Do I need to fast?</div>
-            <div class="bubble out">No fasting required for this visit. See you Thursday 👋</div>
+          <div class="hero-stage-grid">
+            <div class="hero-stage-chip">
+              <strong>Qualification</strong>
+              <span>Captures intent, urgency, and contact data.</span>
+            </div>
+            <div class="hero-stage-chip">
+              <strong>Scheduling</strong>
+              <span>Books directly against the calendar in real time.</span>
+            </div>
           </div>
-          <div class="sms-meta">Reply time · 4.2s · auto-handled</div>
         </div>
       </div>
     </div>
