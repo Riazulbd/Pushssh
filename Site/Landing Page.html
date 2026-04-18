@@ -1064,6 +1064,35 @@
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }
+  @keyframes fadeInUp {
+    from { transform: translateY(12px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .usecase {
+    animation: fadeInUp 0.5s ease-out backwards;
+  }
+  .usecase:nth-child(1) { animation-delay: 0.1s; }
+  .usecase:nth-child(2) { animation-delay: 0.2s; }
+  .usecase:nth-child(3) { animation-delay: 0.3s; }
+  .usecase:nth-child(4) { animation-delay: 0.4s; }
+  .usecase:nth-child(5) { animation-delay: 0.5s; }
+  .usecase:nth-child(6) { animation-delay: 0.6s; }
+  .usecase:nth-child(7) { animation-delay: 0.7s; }
+  .usecase:nth-child(8) { animation-delay: 0.8s; }
+
+  .section-head {
+    animation: fadeInUp 0.6s ease-out 0.2s backwards;
+  }
+  .step {
+    animation: fadeInUp 0.5s ease-out backwards;
+  }
+  .step:nth-child(1) { animation-delay: 0.1s; }
+  .step:nth-child(2) { animation-delay: 0.3s; }
+  .step:nth-child(3) { animation-delay: 0.5s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .usecase, .section-head, .step { animation: none !important; }
+  }
   @media (max-width: 600px) {
     .modal-content {
       width: 95%;
