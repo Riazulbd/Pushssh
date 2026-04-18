@@ -7,7 +7,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"></noscript>
 
 <script>
   // --- Tweakable defaults (host-editable) ---
@@ -466,9 +467,9 @@
   }
   .logo-item {
     height: 30px; display: grid; place-items: center;
-    font-family: var(--font-display); font-size: 20px; color: var(--ink-400); letter-spacing: -0.01em;
+    font-family: var(--font-display); font-size: 20px; color: var(--ink-700); letter-spacing: -0.01em;
     font-weight: 500;
-    opacity: 0.85;
+    opacity: 1;
   }
   [data-font="inter"] .logo-item, [data-font="plex"] .logo-item { font-family: var(--font-body); font-weight: 600; }
 
@@ -979,6 +980,7 @@
 </nav>
 
 <!-- =================== HERO =================== -->
+<main>
 <section class="hero">
   <div class="wrap hero-grid">
 
@@ -1216,8 +1218,8 @@
     </div>
 
     <div class="dash-tabs" role="tablist">
-      <button class="dash-tab active" data-pane="voice">Voice AI</button>
-      <button class="dash-tab" data-pane="sms">SMS AI</button>
+      <button class="dash-tab active" role="tab" aria-selected="true" aria-controls="voice-pane" data-pane="voice">Voice AI</button>
+      <button class="dash-tab" role="tab" aria-selected="false" aria-controls="sms-pane" data-pane="sms">SMS AI</button>
     </div>
 
     <div class="dash-frame">
@@ -1225,11 +1227,11 @@
         <span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span>
         <div class="url">app.aiautomationflow.com / dashboard</div>
       </div>
-      <div class="dash-pane active" data-pane="voice">
-        <img src="dashboards/voice.png" alt="Voice AI dashboard with calls completed, sentiment, and durations">
+      <div class="dash-pane active" id="voice-pane" role="tabpanel" data-pane="voice">
+        <img src="dashboards/voice.png" alt="Voice AI dashboard with calls completed, sentiment, and durations" width="655" height="264" style="width:100%; height:auto;">
       </div>
-      <div class="dash-pane" data-pane="sms">
-        <img src="dashboards/sms.png" alt="SMS AI dashboard with unique contacts, actions triggered, and time saved">
+      <div class="dash-pane" id="sms-pane" role="tabpanel" data-pane="sms">
+        <img src="dashboards/sms.png" alt="SMS AI dashboard with unique contacts, actions triggered, and time saved" width="655" height="264" style="width:100%; height:auto;">
       </div>
     </div>
 
@@ -1271,20 +1273,20 @@
     </div>
 
     <div class="integrations">
-      <div class="integration"><img src="logos/followupboss.png" alt="Follow Up Boss"></div>
-      <div class="integration"><img src="logos/boomtown.webp" alt="BoomTown"></div>
-      <div class="integration"><img src="logos/kvcore.png" alt="kvCORE"></div>
-      <div class="integration"><img src="logos/gohighlevel.png" alt="Go High Level"></div>
-      <div class="integration"><img src="logos/hubspot.png" alt="HubSpot"></div>
-      <div class="integration"><img src="logos/liondesk.png" alt="LionDesk"></div>
-      <div class="integration"><img src="logos/lofty.svg" alt="Lofty"></div>
-      <div class="integration"><img src="logos/realgeeks.png" alt="Real Geeks"></div>
-      <div class="integration"><img src="logos/cincpro.svg" alt="CINC Pro"></div>
-      <div class="integration"><img src="logos/wiseagent.svg" alt="Wise Agent"></div>
-      <div class="integration"><img src="logos/buildium.png" alt="Buildium"></div>
-      <div class="integration"><img src="logos/zillow.png" alt="Zillow"></div>
-      <div class="integration"><img src="logos/notion.png" alt="Notion"></div>
-      <div class="integration"><img src="logos/vapi.avif" alt="VAPI"></div>
+      <div class="integration"><img src="logos/followupboss.png" alt="Follow Up Boss" width="345" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/boomtown.webp" alt="BoomTown" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/kvcore.png" alt="kvCORE" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/gohighlevel.png" alt="Go High Level" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/hubspot.png" alt="HubSpot" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/liondesk.png" alt="LionDesk" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/lofty.svg" alt="Lofty" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/realgeeks.png" alt="Real Geeks" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/cincpro.svg" alt="CINC Pro" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/wiseagent.svg" alt="Wise Agent" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/buildium.png" alt="Buildium" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/zillow.png" alt="Zillow" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/notion.png" alt="Notion" width="237" height="66" style="width:100%; height:auto;"></div>
+      <div class="integration"><img src="logos/vapi.avif" alt="VAPI" width="237" height="66" style="width:100%; height:auto;"></div>
       <div class="integration" style="background:var(--ink-50); color:var(--ink-500); font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase;">+ 20 more</div>
       <div class="integration" style="background:var(--ink-900);"><a href="#cta" style="color:var(--paper); font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase;">Request yours →</a></div>
     </div>
@@ -1389,6 +1391,7 @@
 </section>
 
 <!-- =================== FOOTER =================== -->
+</main>
 <footer>
   <div class="wrap">
     <div class="foot">
@@ -1482,7 +1485,10 @@
   document.querySelectorAll('.dash-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       const target = tab.dataset.pane;
-      document.querySelectorAll('.dash-tab').forEach(t => t.classList.toggle('active', t === tab));
+      document.querySelectorAll('.dash-tab').forEach(t => {
+        t.classList.toggle('active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
       document.querySelectorAll('.dash-pane').forEach(p => p.classList.toggle('active', p.dataset.pane === target));
     });
   });
