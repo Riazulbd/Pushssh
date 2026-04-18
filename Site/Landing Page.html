@@ -738,7 +738,7 @@
   .cta-inner .btn-ghost:hover { border-color: var(--paper); }
 
   /* Footer */
-  footer { padding: 56px 0 48px; background: var(--paper); border-top: 1px solid var(--ink-100); }
+  footer { padding: 56px 0 48px; background: linear-gradient(135deg, rgba(110,46,232,0.06) 0%, rgba(255,77,141,0.04) 50%, rgba(255,179,71,0.03) 100%), var(--paper); border-top: 1px solid var(--ink-100); }
   .foot {
     display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
     margin-bottom: 48px;
@@ -756,6 +756,9 @@
     padding-top: 28px; border-top: 1px solid var(--ink-100);
     font-size: 12px; color: var(--ink-400); font-family: var(--font-mono);
   }
+  .foot-legal { display: flex; gap: 24px; }
+  .foot-legal a { font-size: 12px; color: var(--ink-700); }
+  .foot-legal a:hover { color: var(--accent-600); }
 
   /* ---------- Tweaks Panel ---------- */
   #tweaks-panel {
@@ -913,6 +916,7 @@
       align-items: flex-start;
       gap: 12px;
     }
+    .foot-legal { gap: 16px; }
     [data-hero="editorial"] .hero-visual { grid-template-columns: 1fr; }
   }
   @media (max-width: 720px) {
@@ -1550,6 +1554,10 @@
     </div>
     <div class="foot-bottom">
       <div>© 2026 Ai Automation Flow, Inc.</div>
+      <div class="foot-legal">
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms-and-conditions">Terms & Conditions</a>
+      </div>
       <div>Made for operators · v2.4</div>
     </div>
   </div>
