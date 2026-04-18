@@ -113,7 +113,7 @@
       <p>Schedule a 20-minute call with our team</p>
     </div>
     <div class="modal-body" id="calendar-embed">
-      <iframe src="https://link.automationpaths.com/widget/booking/EpX6GpsE7i9HfNCJceF4" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="uQlTYqUYXJQGWX0qKmRA_1776493329124"></iframe><br><script src="https://link.automationpaths.com/js/form_embed.js" type="text/javascript"></script>
+      <iframe src="https://link.automationpaths.com/widget/booking/EpX6GpsE7i9HfNCJceF4" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="uQlTYqUYXJQGWX0qKmRA_1776493329124"></iframe>
     </div>
   </div>
 </div>
@@ -123,10 +123,18 @@
   const modalOverlay = document.getElementById('modal-overlay');
   const modalClose = document.getElementById('modal-close');
   const bookNowButtons = document.querySelectorAll('.btn-book-now');
+  let calendarScriptLoaded = false;
 
   function openModal() {
     bookingModal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    if (!calendarScriptLoaded) {
+      const script = document.createElement('script');
+      script.src = 'https://link.automationpaths.com/js/form_embed.js';
+      script.type = 'text/javascript';
+      document.getElementById('calendar-embed').appendChild(script);
+      calendarScriptLoaded = true;
+    }
   }
 
   function closeModal() {
