@@ -1,0 +1,13 @@
+---
+const { page } = Astro.props;
+---
+
+<!doctype html>
+<html lang={page.htmlLang}>
+  <head>
+    <Fragment set:html={page.head} />
+  </head>
+  <body {...page.bodyAttributes}>
+    <Fragment set:html={page.body} />
+  </body>
+</html>

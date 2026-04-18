@@ -1,0 +1,18 @@
+---
+import LegacyPage from '../../layouts/LegacyPage.astro';
+import { getLegacyPage, getUsecaseSlugs } from '../../lib/legacy-page.js';
+
+export function getStaticPaths() {
+  return getUsecaseSlugs().map((slug) => ({
+    params: { slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const page = getLegacyPage(`Site/usecases/${slug}.html`, [
+  ['../Landing Page.html#', '/#'],
+  ['../Landing Page.html', '/'],
+]);
+---
+
+<LegacyPage page={page} />

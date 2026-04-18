@@ -1,0 +1,8 @@
+---
+import LegacyPage from '../layouts/LegacyPage.astro';
+import { getLegacyPage } from '../lib/legacy-page.js';
+
+const page = getLegacyPage('Site/Landing Page.html');
+---
+
+<LegacyPage page={page} />
