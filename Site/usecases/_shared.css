@@ -54,6 +54,7 @@ p { margin:0; color: var(--ink-700); }
 .logo-mark::before, .logo-mark::after { content:''; position:absolute; border:1.5px solid var(--paper); border-radius:50%; }
 .logo-mark::before { width:14px; height:14px; }
 .logo-mark::after { width:6px; height:6px; background: var(--grad-b); border:none; }
+.logo-name { white-space: nowrap; }
 .logo-name em { font-style:italic; color: var(--ink-500); font-weight:400; }
 .nav-links { display:flex; gap:32px; font-size:14px; color: var(--ink-700); }
 .nav-links a:hover { color: var(--ink-900); }
@@ -221,8 +222,78 @@ p { margin:0; color: var(--ink-700); }
 .cta-band .btn-ghost:hover { border-color: var(--paper); }
 
 /* Footer */
-footer { padding:48px 0; background: var(--paper); border-top:1px solid var(--ink-100); font-size:12px; color: var(--ink-400); font-family: var(--font-mono); }
-.foot-row { display:flex; justify-content:space-between; align-items:center; }
+footer { padding:48px 0; background: linear-gradient(135deg, rgba(110,46,232,0.06) 0%, rgba(255,77,141,0.04) 50%, rgba(255,179,71,0.03) 100%), var(--paper); border-top:1px solid var(--ink-100); font-size:12px; color: var(--ink-400); font-family: var(--font-mono); }
+.foot-row { display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+.foot-legal { display:flex; gap:24px; }
+.foot-legal a { color: var(--ink-700); }
+.foot-legal a:hover { color: var(--ink-900); }
+
+/* Modal */
+.booking-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.booking-modal[style*="display: flex"] { display: flex !important; }
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 17, 22, 0.7);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+.modal-content {
+  position: relative;
+  background: var(--paper);
+  border-radius: 16px;
+  box-shadow: 0 20px 80px -20px rgba(16, 24, 40, 0.35);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-500);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--ink-900); }
+.modal-header {
+  padding: 32px 32px 0;
+  border-bottom: 1px solid var(--ink-100);
+}
+.modal-header h2 {
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+.modal-header p {
+  color: var(--ink-500);
+  font-size: 15px;
+}
+.modal-body {
+  padding: 32px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 
 @media (max-width: 1080px) {
   .split-grid { gap:48px; }

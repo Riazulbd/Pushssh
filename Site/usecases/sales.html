@@ -23,8 +23,7 @@
       <a href="../Landing Page.html#integrations">Integrations</a>
     </div>
     <div class="nav-cta">
-      <a href="#" class="btn btn-text">Sign in</a>
-      <a href="#cta" class="btn btn-primary">Book a demo →</a>
+      <a href="#cta" class="btn btn-primary btn-book-now">Book a demo →</a>
     </div>
   </div>
 </nav>
@@ -43,7 +42,7 @@
     <h1>Speed-to-lead,<br><span class="italic">finally solved.</span></h1>
     <p class="uc-lede">Inbound web leads called within 60 seconds, qualified against your scorecard, and warm-transferred to your reps when they're ready to talk.</p>
     <div class="uc-actions">
-      <a href="#cta" class="btn btn-primary btn-lg">Book a demo →</a>
+      <a href="#cta" class="btn btn-primary btn-lg btn-book-now">Book a demo →</a>
       <a href="#how" class="btn btn-ghost btn-lg">See it in action</a>
     </div>
   </div>
@@ -86,13 +85,68 @@
   <h2 style="margin-top:16px">See it on a number <span class="italic">like yours.</span></h2>
   <p>20-minute demo. We'll model your actual call volume and show you the agent live.</p>
   <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-    <a href="#" class="btn btn-primary btn-lg">Book a demo →</a>
+    <a href="#" class="btn btn-primary btn-lg btn-book-now">Book a demo →</a>
     <a href="#" class="btn btn-ghost btn-lg">Talk to solutions</a>
   </div>
 </div></section>
 <footer><div class="wrap foot-row">
   <div>© 2026 Ai Automation Flow, Inc.</div>
+  <div class="foot-legal">
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms-and-conditions.html">Terms & Conditions</a>
+  </div>
   <div>Made for operators · v2.4</div>
 </div></footer>
+
+<!-- BOOKING MODAL -->
+<div id="booking-modal" class="booking-modal" style="display: none;">
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close" aria-label="Close booking modal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="modal-header">
+      <h2>Book a Demo</h2>
+      <p>Schedule a 20-minute call with our team</p>
+    </div>
+    <div class="modal-body" id="calendar-embed">
+      <!-- Calendar embed code will be inserted here -->
+    </div>
+  </div>
+</div>
+
+<script>
+  const bookingModal = document.getElementById('booking-modal');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalClose = document.getElementById('modal-close');
+  const bookNowButtons = document.querySelectorAll('.btn-book-now');
+
+  function openModal() {
+    bookingModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    bookingModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  bookNowButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && bookingModal.style.display === 'flex') closeModal();
+  });
+</script>
 </body>
 </html>
