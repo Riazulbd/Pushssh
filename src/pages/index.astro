@@ -2,7 +2,11 @@
 import LegacyPage from '../layouts/LegacyPage.astro';
 import { getLegacyPage } from '../lib/legacy-page.js';
 
-const page = getLegacyPage('Site/Landing Page.html');
+const page = getLegacyPage('Site/Landing Page.html', [
+  ['href="usecases/', 'href="/usecases/'],
+  ['src="dashboards/', 'src="/dashboards/'],
+  ['src="logos/', 'src="/logos/'],
+]);
 ---
 
 <LegacyPage page={page} />

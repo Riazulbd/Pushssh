@@ -4,8 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "sync:site": "node scripts/sync-site-assets.mjs",
+    "predev": "npm run sync:site",
     "dev": "astro dev --host 0.0.0.0 --port 3000",
+    "prebuild": "npm run sync:site",
     "build": "astro build",
+    "prepreview": "npm run sync:site",
     "preview": "astro preview --host 0.0.0.0 --port 3000",
     "clean": "node -e \"import('node:fs/promises').then((fs) => fs.rm('dist', { recursive: true, force: true }))\""
   },

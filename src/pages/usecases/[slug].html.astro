@@ -9,9 +9,12 @@ export function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
+const usecaseSlugs = getUsecaseSlugs();
 const page = getLegacyPage(`Site/usecases/${slug}.html`, [
   ['../Landing Page.html#', '/#'],
   ['../Landing Page.html', '/'],
+  ['href="_shared.css"', 'href="/usecases/_shared.css"'],
+  ...usecaseSlugs.map((usecaseSlug) => [`href="${usecaseSlug}.html"`, `href="/usecases/${usecaseSlug}.html"`]),
 ]);
 ---
 
